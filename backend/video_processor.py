@@ -51,8 +51,14 @@ def create_browser_video_writer(output_path: str, fps: float, width: int, height
 
     # 3. Default fallback
     logger.warning(f"H.264 codecs failed; falling back to mp4v for {output_path}")
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    return cv2.VideoWriter(output_path, fourcc, fps, (width, height))
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    writer = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
+
+    if writer.isOpened():
+        logger.info(f"Initialized fallback mp4v writer for {output_path}")
+        return writer
+
+    raise RuntimeError(f"Could not initialize any video writer for {output_path}")
 
 def get_job_progress(video_id: str) -> Dict[str, Any]:
     return processing_jobs.get(video_id, {"status": "not_found", "progress": 0})
