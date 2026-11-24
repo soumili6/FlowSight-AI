@@ -1,0 +1,59 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Ultralytics & Torch models
+models/*.pt
+
+yolov8*.pt
+runs/
+
+# Traffic video storage (keep structure, ignore video blobs if large)
+traffic_videos/uploads/*
+!traffic_videos/uploads/.gitkeep
+traffic_videos/processed/*
+!traffic_videos/processed/.gitkeep
+
+# Database
+database/*.db
+database/*.db-journal
+database/*.db-wal
+database/*.db-shm
+!database/.gitkeep
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# OS & Editors
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python environment
+.env/
+# Test videos
+_test_*.mp4
+# Video and binary files
+*.dll
+traffic_videos/samples/*.mp4
+traffic_videos/samples/*.avi
+traffic_videos/samples/*.mov
+
+# AI cache
+.ultralytics/
